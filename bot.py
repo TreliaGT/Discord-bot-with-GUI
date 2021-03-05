@@ -34,13 +34,14 @@ class loadbot(threading.Thread):
 	
 	def __init__(self):
 		threading.Thread.__init__(self)
-		self._run()
+		self.botrun()
 		
-	def _run(self):
+	def botrun(self):
 		load_dotenv()
 		token = os.getenv('TOKEN')
 		bot = botclass()
 		bot.run(token)
+
 
 
 
