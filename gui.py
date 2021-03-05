@@ -56,7 +56,21 @@ class Application(tk.Frame):
 		c3 = tk.Checkbutton(self, text='None',variable='None', onvalue=1, offvalue=0)
 		c3.grid(row = 2 , column = 3)
 
-app = Application(master=root)
+
+class creategui(threading.Thread):
+	def __init__(self):
+		threading.Thread.__init__(self)
+		self._run()
+		
+	def _run(self):
+		app = Application(master=root)
+		app.mainloop()
+
+
+gui = creategui()
 bot = loadbot()
 bot.start()
-app.mainloop()
+gui.start()
+
+
+
