@@ -1,15 +1,14 @@
 #gui.py
+import sys
 import tkinter as tk
 from tkinter import *
-
-def app():
-	root = tk.Tk()
-	root.title('Caller Records For Day') 
-	root.geometry("1300x600")
-	root.columnconfigure((0, 2, 3, 4 ,5), weight=1)
-	
-	app = Application(master=root)
-	app.mainloop()
+from bot import loadbot 
+import threading
+import discord 
+root = tk.Tk()
+root.title('Caller Records For Day') 
+root.geometry("1300x600")
+root.columnconfigure((0, 2, 3, 4 ,5), weight=1)
 
 class Application(tk.Frame): 
 	count = 1
@@ -56,3 +55,8 @@ class Application(tk.Frame):
 		c2.grid(row = 2 , column = 2)
 		c3 = tk.Checkbutton(self, text='None',variable='None', onvalue=1, offvalue=0)
 		c3.grid(row = 2 , column = 3)
+
+app = Application(master=root)
+bot = loadbot()
+bot.start()
+app.mainloop()
