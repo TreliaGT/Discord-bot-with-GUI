@@ -8,7 +8,6 @@ import threading
 class botclass(discord.Client):
 	load_dotenv()
 	botchatid = int(os.getenv('BOTCHAT'))
-	token = os.getenv('TOKEN')
 
 	async def on_ready(self):
 		print('We have logged in as {0.user}'.format(self))
@@ -31,18 +30,12 @@ class botclass(discord.Client):
 		
 
 class loadbot(threading.Thread): 
+	
 	def __init__(self):
 		threading.Thread.__init__(self)
 		
-	def run():
+	def run(self):
 		load_dotenv()
 		token = os.getenv('TOKEN')
-		botclass.run(token)
-
-
-
-
-
-
-
-
+		bot = botclass
+		bot.run(token)
