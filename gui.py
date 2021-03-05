@@ -19,7 +19,9 @@ class Application(tk.Frame):
 		self.create_widgets()
 		
 	def addtolist(args , name , phone , message , comapany , Lb1 , c1,c2 ):
-		Lb1.insert(int(args.count), name.get() + ' ' +  comapany.get() + ': ' + phone.get() + ' : ' + message.get())
+		mail = name.get() + ' ' +  comapany.get() + ': ' + phone.get() + ' : ' + message.get()
+		Lb1.insert(int(args.count), mail)
+		
 		args.count = int(args.count) + 1
 		name.delete(0, 'end')
 		comapany.delete(0, 'end')
@@ -65,7 +67,6 @@ class creategui(threading.Thread):
 	def _run(self):
 		app = Application(master=root)
 		app.mainloop()
-
 
 gui = creategui()
 bot = loadbot()
