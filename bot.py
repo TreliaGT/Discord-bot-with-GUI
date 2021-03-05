@@ -4,7 +4,8 @@ import discord
 from dotenv import load_dotenv
 import os
 import threading
-
+import asyncio
+ 
 class botclass(discord.Client):
 	load_dotenv()
 	botchatid = int(os.getenv('BOTCHAT'))
@@ -33,9 +34,17 @@ class loadbot(threading.Thread):
 	
 	def __init__(self):
 		threading.Thread.__init__(self)
+		self._run()
 		
-	def run(self):
+	def _run(self):
 		load_dotenv()
 		token = os.getenv('TOKEN')
-		bot = botclass
+		bot = botclass()
 		bot.run(token)
+
+
+
+
+
+
+
